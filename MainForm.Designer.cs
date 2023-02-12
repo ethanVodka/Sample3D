@@ -60,13 +60,14 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.pictureBox);
-            this.splitContainer.Size = new System.Drawing.Size(740, 628);
+            this.splitContainer.Size = new System.Drawing.Size(886, 719);
             this.splitContainer.SplitterDistance = 48;
             this.splitContainer.TabIndex = 0;
             // 
             // BtnReverse
             // 
-            this.BtnReverse.Location = new System.Drawing.Point(662, 12);
+            this.BtnReverse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnReverse.Location = new System.Drawing.Point(799, 12);
             this.BtnReverse.Name = "BtnReverse";
             this.BtnReverse.Size = new System.Drawing.Size(75, 23);
             this.BtnReverse.TabIndex = 2;
@@ -100,7 +101,7 @@
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(740, 576);
+            this.pictureBox.Size = new System.Drawing.Size(886, 667);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
@@ -112,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 628);
+            this.ClientSize = new System.Drawing.Size(886, 719);
             this.Controls.Add(this.splitContainer);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
