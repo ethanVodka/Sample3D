@@ -4,12 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sample3D
+namespace Rotate3D
 {
     public partial class MainForm : Form
     {
@@ -17,131 +17,97 @@ namespace Sample3D
         {
             InitializeComponent();
         }
-
-        private struct Pos
-        {
-            public float x;
-            public float y;
-            public float z;
-        }
-
         //中心座標
-        private static readonly PointF Center = new PointF(200, 200);
+        private float X { get; set; } = 0;
+        private float Y { get; set; } = 0;
 
-        //オリジナル座標
-        private static Pos[] op =
-        {
-            //手前
-            new Pos()
-            {
-                x = 100,
-                y = 100,
-                z = 0,
-            }
-            , new Pos()
-             {
-                x=100,
-                y=300,
-                z=0,
-            }
-            , new Pos()
-            {
-                x = 300,
-                y = 300,
-                z = 0,
-            }
-            , new Pos()
-            {
-                x = 300,
-                y = 100,
-                z = 0,
-            }
-            //奥
-            , new Pos()
-            {
-                x = 150,
-                y = 150,
-                z = 0,
-            }
-            , new Pos()
-             {
-                x=150,
-                y=250,
-                z=0,
-            }
-            , new Pos()
-            {
-                x = 250,
-                y = 250,
-                z = 0,
-            }
-            , new Pos()
-            {
-                x = 250,
-                y = 150,
-                z = 0,
-            }
-        };
+        //角度
+        private float Deg { get; set; } = 0;
 
-
-
-        static float Deg { get; set; } = 0;
+        //サイン
+        private float Sin { get; set; } = 0;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            X = pictureBox.Width / 2;
+            Y = pictureBox.Height / 2;
         }
 
-        private void Draw3D()
+        private void timer_Tick(object sender, EventArgs e)
         {
-            Bitmap objBmp = new Bitmap(pictureBox.Width, pictureBox.Height);
-            Graphics objGrp = Graphics.FromImage(objBmp);
-            Pen objPen = new Pen(Color.Red, 2.0f);
+            /*
+             * 繰り返し描画処理
+             */
 
-
-            //変動座標定義
-            Pos[] p = new Pos[8];
-
-            float theta = Deg / 180;
-            float s = (float)Math.Sin(theta);
-            float c = (float)Math.Cos(theta);
-
-
-            for (int i = 0; i < op.Length; i++)
-            {
-                p[i].x = op[i].x * c + op[i].y * -s;
-                p[i].y = op[i].y;
-                p[i].z = op[i].x * s + op[i].z * c;
-
-                p[i].z += 2;
-
-                ////z座標により奥行見せる
-                p[i].x /= p[i].z;
-                p[i].y /= p[i].z;
-            }
-
-            Deg += 5;
-            for (int i = 0; i < op.Length / 2; i++)
-            {
-                int j = (i + 1) % 4;
-                objGrp.DrawLine(objPen, p[i].x + Center.X, p[i].y + Center.Y, p[j].x + Center.X, p[j].y + Center.Y);
-                objGrp.DrawLine(objPen, p[i + 4].x + Center.X, p[i + 4].y + Center.Y, p[j + 4].x + Center.X, p[j + 4].y + Center.Y);
-                objGrp.DrawLine(objPen, p[i].x + Center.X, p[i].y + Center.Y, p[i + 4].x + Center.X, p[i + 4].y + Center.Y);
-            }
-            pictureBox.Image = objBmp;
-
-            //ガベージ処理
-            objGrp.Dispose();
+            Draw3D();
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            //Draw3D();
+            timer.Enabled = true;
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void BtnStop_Click(object sender, EventArgs e)
         {
-            Draw3D();
+            timer.Enabled = false;
+        }
+
+        //描画処理
+        private void Draw3D()
+        {
+            Vector[] op = Vector.Init(X, Y);
+            Vector[] p = op;
+            //Bitmap作成
+            Bitmap objBmp = new Bitmap(pictureBox.Width, pictureBox.Height);
+            Graphics objGrp = Graphics.FromImage(objBmp);
+
+
+            //各点を回転させた座標取得
+            for (int i = 0; i < p.Length; i++)
+            {
+                PointF P = RotatePoint(new PointF(op[i].x, op[i].y), new PointF(X, Y), Deg);
+                p[i].x = P.X;
+                p[i].y = P.Y;
+                p[i].z = p[i].z;
+
+                p[i].z += 2;
+
+                p[i].x /= p[i].z;
+                p[i].y /= p[i].z;
+            }
+
+            for (int i = 0; i < p.Length / 2; i++)
+            {
+                int j = (i + 1) % 4;
+                objGrp.DrawLine(Pens.Red, p[i].x, p[i].y, p[j].x, p[j].y);
+                objGrp.DrawLine(Pens.Red, p[i + 4].x, p[i + 4].y, p[j + 4].x, p[j + 4].y);
+                objGrp.DrawLine(Pens.Red, p[i].x, p[i].y, p[i + 4].x, p[i + 4].y);
+            }
+
+
+            pictureBox.Image = objBmp;
+
+            //繰り返し処理のため角度10度ずつ増やす
+            Deg += 5f;
+        }
+
+        //点P の周りを回転させる
+        private PointF RotatePoint(PointF pointToRotate, PointF centerPoint, float angleInDegrees)
+        {
+            float angleInRadians = angleInDegrees * (float)(Math.PI / 180);
+            float cosTheta = (float)Math.Cos(angleInRadians);
+            float sinTheta = (float)Math.Sin(angleInRadians);
+
+            Sin = sinTheta;
+            
+            return new PointF
+            {
+                X = cosTheta * (pointToRotate.X - centerPoint.X) -
+                    sinTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.X,
+
+                Y = sinTheta * (pointToRotate.X - centerPoint.X) +
+                    cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y
+            };
         }
     }
 }

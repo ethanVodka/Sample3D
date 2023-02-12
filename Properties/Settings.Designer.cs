@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sample3D.Properties
+namespace Rotate3D.Properties
 {
 
 

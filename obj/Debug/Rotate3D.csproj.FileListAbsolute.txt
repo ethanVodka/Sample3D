@@ -1,0 +1,11 @@
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\bin\Debug\Rotate3D.exe.config
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\bin\Debug\Rotate3D.exe
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\bin\Debug\Rotate3D.pdb
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\obj\Debug\Rotate3D.csproj.AssemblyReference.cache
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\obj\Debug\Rotate3D.csproj.SuggestedBindingRedirects.cache
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\obj\Debug\Rotate3D.Properties.Resources.resources
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\obj\Debug\Rotate3D.csproj.GenerateResource.cache
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\obj\Debug\Rotate3D.csproj.CoreCompileInputs.cache
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\obj\Debug\Rotate3D.exe
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\obj\Debug\Rotate3D.pdb
+C:\Users\pikas\OneDrive\デスクトップ\Rotate3D\obj\Debug\Rotate3D.MainForm.resources

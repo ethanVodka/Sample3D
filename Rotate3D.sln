@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample3D", "Sample3D.csproj", "{00AE694C-7670-4812-9780-CD831A90AAEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rotate3D", "Rotate3D.csproj", "{77F758A1-513A-4E41-A6CD-BA706E58E36C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{00AE694C-7670-4812-9780-CD831A90AAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{00AE694C-7670-4812-9780-CD831A90AAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{00AE694C-7670-4812-9780-CD831A90AAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{00AE694C-7670-4812-9780-CD831A90AAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77F758A1-513A-4E41-A6CD-BA706E58E36C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77F758A1-513A-4E41-A6CD-BA706E58E36C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77F758A1-513A-4E41-A6CD-BA706E58E36C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77F758A1-513A-4E41-A6CD-BA706E58E36C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EDAD7868-9C10-49D3-BAC7-2C77440D6616}
+		SolutionGuid = {58F891C3-D21F-45F6-88F8-95B138539F79}
 	EndGlobalSection
 EndGlobal
