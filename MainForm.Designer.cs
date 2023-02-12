@@ -30,10 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.BtnStart = new System.Windows.Forms.Button();
+            this.BtnReverse = new System.Windows.Forms.Button();
             this.BtnStop = new System.Windows.Forms.Button();
+            this.BtnStart = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             // splitContainer.Panel1
             // 
+            this.splitContainer.Panel1.Controls.Add(this.BtnReverse);
             this.splitContainer.Panel1.Controls.Add(this.BtnStop);
             this.splitContainer.Panel1.Controls.Add(this.BtnStart);
             // 
@@ -62,19 +64,25 @@
             this.splitContainer.SplitterDistance = 48;
             this.splitContainer.TabIndex = 0;
             // 
-            // timer
+            // BtnReverse
             // 
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.BtnReverse.Location = new System.Drawing.Point(662, 12);
+            this.BtnReverse.Name = "BtnReverse";
+            this.BtnReverse.Size = new System.Drawing.Size(75, 23);
+            this.BtnReverse.TabIndex = 2;
+            this.BtnReverse.Text = "Reverse";
+            this.BtnReverse.UseVisualStyleBackColor = true;
+            this.BtnReverse.Click += new System.EventHandler(this.BtnReverse_Click);
             // 
-            // pictureBox
+            // BtnStop
             // 
-            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(740, 576);
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
+            this.BtnStop.Location = new System.Drawing.Point(84, 12);
+            this.BtnStop.Name = "BtnStop";
+            this.BtnStop.Size = new System.Drawing.Size(75, 23);
+            this.BtnStop.TabIndex = 1;
+            this.BtnStop.Text = "Stop";
+            this.BtnStop.UseVisualStyleBackColor = true;
+            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
             // BtnStart
             // 
@@ -86,15 +94,19 @@
             this.BtnStart.UseVisualStyleBackColor = true;
             this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
-            // BtnStop
+            // pictureBox
             // 
-            this.BtnStop.Location = new System.Drawing.Point(84, 12);
-            this.BtnStop.Name = "BtnStop";
-            this.BtnStop.Size = new System.Drawing.Size(75, 23);
-            this.BtnStop.TabIndex = 1;
-            this.BtnStop.Text = "Stop";
-            this.BtnStop.UseVisualStyleBackColor = true;
-            this.BtnStop.Click += new System.EventHandler(this.BtnStop_Click);
+            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(740, 576);
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // MainForm
             // 
@@ -122,6 +134,7 @@
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button BtnStop;
         private System.Windows.Forms.Button BtnStart;
+        private System.Windows.Forms.Button BtnReverse;
     }
 }
 

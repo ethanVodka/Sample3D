@@ -24,9 +24,7 @@ namespace Rotate3D
         //角度
         private float Deg { get; set; } = 0;
 
-        //サイン
-        private float Sin { get; set; } = 0;
-
+        private bool isReverse { get; set; } = false;
         private void MainForm_Load(object sender, EventArgs e)
         {
             X = pictureBox.Width / 2;
@@ -87,8 +85,15 @@ namespace Rotate3D
 
             pictureBox.Image = objBmp;
 
-            //繰り返し処理のため角度10度ずつ増やす
-            Deg += 5f;
+            //繰り返し処理のため角度10度変更
+            if (isReverse)
+            {
+                Deg += 5f;
+            }
+            else
+            {
+                Deg -= 5f;
+            }
         }
 
         //点P の周りを回転させる
@@ -98,8 +103,6 @@ namespace Rotate3D
             float cosTheta = (float)Math.Cos(angleInRadians);
             float sinTheta = (float)Math.Sin(angleInRadians);
 
-            Sin = sinTheta;
-            
             return new PointF
             {
                 X = cosTheta * (pointToRotate.X - centerPoint.X) -
@@ -108,6 +111,12 @@ namespace Rotate3D
                 Y = sinTheta * (pointToRotate.X - centerPoint.X) +
                     cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y
             };
+        }
+
+        //回転向き変更
+        private void BtnReverse_Click(object sender, EventArgs e)
+        {
+            isReverse = !isReverse;
         }
     }
 }
